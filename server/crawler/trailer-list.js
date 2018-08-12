@@ -30,7 +30,7 @@ const sleep = time => new Promise(resolve => {
     await page.click('.more'); 
   }
 
-  const reuslt = await page.evaluate(() => {
+  const result = await page.evaluate(() => {
     const { $ } = window;
     const items = $('.list-wp a');
     const links = [];
@@ -54,5 +54,7 @@ const sleep = time => new Promise(resolve => {
 
   browser.close();
 
-  console.log('reuslt', reuslt);
+  process.send({ result });
+  process.exit(0);
+
 })();
