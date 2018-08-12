@@ -21,7 +21,7 @@ const { resolve } = require('path');
     if (invoked) {
       return false;
     } else {
-      invoked = false;
+      invoked = true;
       let err = code === 0 ? null : new Error(`exit code ${code}`);
       console.log('exit error', err);
     }
