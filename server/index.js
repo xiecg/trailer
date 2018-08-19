@@ -8,11 +8,8 @@ const app = new Koa();
 (async() => {
   await connect();
   initSchemas();
-
-  const mongoose = require('mongoose');
-  const Movie = mongoose.model('Movie');
-  const movies = Movie.find({});
-  console.log('index', movies);
+  // require('./tasks/movie');
+  require('./tasks/api');
 })();
 
 app.use(views(resolve(__dirname, './views'), {

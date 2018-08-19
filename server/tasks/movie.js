@@ -1,6 +1,9 @@
 
 const cp = require('child_process');
 const { resolve } = require('path');
+const _ = require('lodash');
+const mongoose = require('mongoose');
+const Movie = mongoose.model('Movie');
 
 (async () => {
   const script = resolve(__dirname, '../crawler/trailer-list.js');
@@ -29,7 +32,15 @@ const { resolve } = require('path');
 
   child.on('message', data => {
     const { result } = data;
-    console.log('message', result);
+    result.forEach(async item => {
+      let movie = await Movie.find({
+        doubanId: item.doubanId,
+      });
+      if (_.isEmpty(movie)) {
+        movie = new Movie(item);
+        await movie.save();
+      }
+    });
   });
 
 })();

@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;
 
 const categorySchema = new Schema({
@@ -24,7 +24,7 @@ const categorySchema = new Schema({
   }
 });
 
-ategorySchema.pre('save', function (next) {
+categorySchema.pre('save', function (next) {
   if (this.isNew) {
     this.meta.createdAt = this.meta.updatedAt = Date.now();
   } else {

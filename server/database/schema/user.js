@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 const SALT_WORK_FACTOR = 10;
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCK_TIME = 2 * 60 * 60 * 1000;
@@ -49,7 +49,7 @@ userSchema.virtual('isLocked').get(function () {
   return !!(this.lockUntil && this.lockUntil > Date.now());
 });
 
-movieSchema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
   if (this.isNew) {
     this.meta.createdAt = this.meta.updatedAt = Date.now();
   } else {
