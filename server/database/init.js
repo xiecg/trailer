@@ -15,6 +15,25 @@ exports.initSchemas = () => {
   });
 }
 
+exports.initAdmin = async () => {
+  const User = mongoose.model('User');
+  let user = await User.findOne({
+    username: 'Chace.xie'
+  });
+
+  if (!user) {
+    const user = new User({
+      username: 'Chace.xie',
+      email: 'chace.xei@gmail.com',
+      password: '123abc',
+      role: 'admin'
+    });
+
+    await user.save();
+  }
+}
+
+
 exports.connect = () => {
 
   let maxConnectTimes = 0;
