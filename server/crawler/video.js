@@ -30,8 +30,9 @@ process.on('message', async movies => {
   
       if (it && it.length > 0) {
         const link = it.attr('href');
-        const cover = it.css('background-image').split("(")[1].split(")")[0];
+        const cover = it.css('background-image').split('\"')[1];
         // url("https://img1.doubanio.com/img/trailer/medium/2493603388.jpg?")
+        // test.replace(/url\(\"(.*?)\"\)/ig, '$1');
         return { link, cover }
       }
   

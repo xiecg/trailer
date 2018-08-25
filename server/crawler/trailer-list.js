@@ -27,7 +27,7 @@ const sleep = time => new Promise(resolve => {
 
   for(let i = 0; i < 1; i++) {
     await sleep(3000);
-    await page.click('.more'); 
+    await page.click('.more');
   }
 
   const result = await page.evaluate(() => {
