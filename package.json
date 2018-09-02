@@ -4,8 +4,8 @@
   "description": "Learn Koa and MongoDB.",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "build": "rm -rf parcel/dist && parcel build parcel/index.html --no-cache -d parcel/dist --public-url /dist/"
+    "start": "rm -rf dist && rm -rf .cache && NODE_ENV=development nodemon ./start.js",
+    "build": "rm -rf parcel/dist && parcel build src/index.html --no-cache -d dist --public-url /"
   },
   "repository": "git@github.com:xiecg/trailer.git",
   "author": "xiecg <xiecg53@163.com>",
