@@ -37,7 +37,7 @@ const uploadToQiniu = async (url, key) => {
     ]
   });
   
-  for (let i = 0; i < [movies[0]].length; i++) {
+  for (let i = 0; i < movies.length; i++) {
     let movie = movies[i];
     console.log('movie', movie);
     if (movie.video && !movie.videoKey) {

@@ -4,7 +4,7 @@ import { Card, Row, Col, Badge, Modal, Spin, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import 'moment/locale/zh-cn';
 
-const site = 'http://video.iblack7.com/';
+const site = 'http://pdgckh256.bkt.clouddn.com/';
 const Meta = Card.Meta;
 const DPlayer = window.DPlayer;
 
@@ -30,9 +30,8 @@ export default class Content extends Component {
     this.setState({
       visible: true
     });
-
-    const video = site + movie.videoKey;
-    const pic = site + movie.coverKey;
+    const video = `${site}${movie.videoKey}`;
+    const pic = movie.cover;
 
     if (!this.player) {
       setTimeout(() => {
@@ -90,7 +89,7 @@ export default class Content extends Component {
                       {it.rate} 分
                     </Badge>
                   ]}
-                  cover={<img onClick={() => this._showModal(it)} src={site + it.posterKey + '?imageMogr2/thumbnail/x1680/crop/1080x1600'} />}
+                  cover={<img onClick={() => this._showModal(it)} src={it.poster} />}
                 >
                   <Meta
                     style={{height: '202px', overflow: 'hidden'}}
