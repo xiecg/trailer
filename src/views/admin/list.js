@@ -29,9 +29,10 @@ export default class AdminList extends Component {
         dataIndex: 'pubdate',
         key: 'pubdate',
         render: (text, record) => (
-          record.pubdate.map((it, i) => (
-            <p key={i}>{moment(it.date).format('YYYY-MM-DD')} {it.country}</p>
-          ))
+          // record.pubdate.map((it, i) => (
+          //   <p key={i}>{moment(it.date).format('YYYY-MM-DD')} {it.country}</p>
+          // ))
+          record.pubdate ? <li>{moment(record.pubdate.date).format('YYYY.MM')} {record.pubdate.country}</li> : undefined
         )
       },
       {

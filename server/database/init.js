@@ -24,7 +24,7 @@ exports.initAdmin = async () => {
   if (!user) {
     const user = new User({
       username: 'Chace.xie',
-      email: 'chace.xei@gmail.com',
+      email: 'chace.xie@gmail.com',
       password: '123abc',
       role: 'admin'
     });

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { message } from 'antd';
 
 const defaultAxiosConf = {
-  timeout: 5000
+  timeout: 5000,
 };
 
 const _request = (params = {}, fn = () => {}) => {

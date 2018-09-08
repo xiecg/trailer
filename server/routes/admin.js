@@ -5,7 +5,42 @@ const { getAllMovies, findAndRemove } = require('../service/movie');
 
 @controller('/admin')
 export class adminController {
+  @get('/movie/list')
+  @auth
+  @admin('admin')
+  async getMovieList (ctx, next) {
+    const movies = await getAllMovies();
+
+    ctx.body = {
+      success: true,
+      data: movies
+    };
+  }
+  
+  @del('/movies')
+  @required({
+    query: ['id']
+  })
+  async remove (ctx, next) {
+    const id = ctx.query.id
+
+    await findAndRemove(id)
+
+    const movies = await getAllMovies()
+
+    ctx.body = {
+      data: movies,
+      success: true
+    }
+  }
+
+
+  @post('/login')
+  @required({
+    body: ['email', 'password']
+  })
   async login (ctx, next) {
+    
     const { email, password } = ctx.request.body;
     const matchData = await checkPassword(email, password);
 
