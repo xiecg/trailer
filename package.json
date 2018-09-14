@@ -4,7 +4,8 @@
   "description": "Learn Koa and MongoDB.",
   "main": "server/index.js",
   "scripts": {
-    "start": "rm -rf dist && rm -rf .cache && NODE_ENV=development nodemon ./start.js",
+    "dev": "rm -rf dist && rm -rf .cache && NODE_ENV=development nodemon ./start.js",
+    "start": "NODE_ENV=production node ./start.js",
     "build": "rm -rf parcel/dist && parcel build src/index.html --no-cache -d dist --public-url /"
   },
   "repository": "git@github.com:xiecg/trailer.git",
@@ -23,7 +24,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "bcrypt": "^3.0.0",
+    "bcrypt": "^1.0.3",
     "cssnext": "^1.8.4",
     "ejs": "^2.5.7",
     "glob": "^7.1.2",
@@ -41,8 +42,8 @@
     "node-sass": "^4.7.2",
     "nodemon": "^1.14.12",
     "parcel-bundler": "^1.5.1",
+    "postcss": "^7.0.2",
     "pug": "^2.0.0-rc.4",
-    "puppeteer": "^0.13.0",
     "qiniu": "^7.1.1",
     "ramda": "^0.25.0",
     "react": "^16.1.1",
