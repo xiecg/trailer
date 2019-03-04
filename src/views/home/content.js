@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { Card, Row, Col, Badge, Modal, Spin, Icon } from 'antd';
 import { Link } from 'react-router-dom';
-import 'moment/locale/zh-cn';
 
 const site = 'http://pdgckh256.bkt.clouddn.com/';
 const Meta = Card.Meta;
 const DPlayer = window.DPlayer;
-
-moment.locale('zh-cn');
 
 export default class Content extends Component {
   state = { visible: false };
@@ -82,7 +79,7 @@ export default class Content extends Component {
                   actions={[
                     <Badge>
                       <Icon style={{marginRight: '2px'}} type='clock-circle' />
-                      {moment(it.meta.createdAt).fromNow(true)} 前更新
+                      {dayjs(it.meta.createdAt).format('MM-DD')} 前更新
                     </Badge>,
                     <Badge>
                       <Icon style={{marginRight: '2px'}} type='star' />

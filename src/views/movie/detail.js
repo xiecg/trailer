@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Tabs, Badge } from 'antd';
 import { request } from '../../lib';
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-
-moment.locale('zh-cn');
+import dayjs from 'dayjs';
 
 const TabPane = Tabs.TabPane;
 const DPlayer = window.DPlayer;
@@ -78,7 +75,7 @@ export default class Detail extends Component {
                 <dl>
                   <dt>豆瓣评分：<Badge count={movie.rate} style={{ backgroundColor: '#52c41a' }} /> 分</dt>
                   <dt>电影分类：{movie.tags && movie.tags.join(' ')}</dt>
-                  <dt>更新时间：{moment(movie.meta.createdAt).fromNow()}</dt>
+                  <dt>更新时间：{dayjs(movie.meta.createdAt).format('YYYY MM-DD')}</dt>
                   <dt>影片介绍：</dt>
                   <dd>{movie.summary}</dd>
                 </dl>
@@ -92,10 +89,7 @@ export default class Detail extends Component {
                         <h6 className='media-title'>{item.title}</h6>
                         <ul className='list-unstyled'>
                           {
-                            // item.pubdate && item.pubdate.map((it, i) => (
-                            //   <li key={i}>{moment(it.date).format('YYYY.MM')} {it.country}</li>
-                            // ))
-                            item.pubdate ? <li>{moment(item.pubdate.date).format('YYYY.MM')} {item.pubdate.country}</li> : undefined
+                            item.pubdate ? <li>{dayjs(item.pubdate.date).format('YYYY.MM')} {item.pubdate.country}</li> : undefined
                           }
                         </ul>
                       </div>

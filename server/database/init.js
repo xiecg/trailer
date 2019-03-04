@@ -2,7 +2,9 @@
 const mongoose = require('mongoose');
 const glob = require('glob');
 const { resolve } = require('path');
-const db = 'mongodb://localhost/trailer';
+// const db = 'mongodb://localhost/trailer';
+// const db = 'mongodb://192.168.65.2:27017/trailer';
+const db = 'mongodb://127.0.0.1:27017/trailer';
 const dbConfig = {
   useNewUrlParser: true,
 }
@@ -47,21 +49,23 @@ exports.connect = () => {
       mongoose.connect(db, dbConfig);
     
       mongoose.connection.on('disconnected', () => {
-        maxConnectTimes++;
-        if (maxConnectTimes < 5) {
+        console.log('maxConnectTimes', maxConnectTimes);
+        // maxConnectTimes++;
+        // if (maxConnectTimes < 5) {
           mongoose.connect(db, dbConfig);
-        } else {
-          throw new Error('db error.');
-        }
+        // } else {
+        //   throw new Error('db error.');
+        // }
       });
     
       mongoose.connection.on('error', err => {
-        maxConnectTimes++;
-        if (maxConnectTimes < 5) {
-          mongoose.connect(db, dbConfig);
-        } else {
-          throw new Error('db error.');
-        }
+        console.log('error -->', err);
+        // maxConnectTimes++;
+        // if (maxConnectTimes < 5) {
+        //   mongoose.connect(db, dbConfig);
+        // } else {
+        //   throw new Error('db error.');
+        // }
       });
     
       mongoose.connection.once('open', () => {
